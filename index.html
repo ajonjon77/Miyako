@@ -326,7 +326,13 @@
             border-radius: 6px;
             margin: 12px 0;
         }
-
+		
+		/* 美食餐廳點擊後變暗灰色樣式 */
+        .spot-img.checked {
+            filter: grayscale(100%) brightness(50%);
+            opacity: 0.6;
+        }
+		
         .spot-desc {
             font-size: 13px;
             color: var(--text-secondary);
@@ -375,6 +381,12 @@
             object-fit: cover;
             border-radius: 4px;
             margin-bottom: 6px;
+        }
+		
+		/* 伴手禮購買後變暗灰色樣式 */
+        .souvenir-img.checked {
+            filter: grayscale(100%) brightness(50%);
+            opacity: 0.6;
         }
 
         .souvenir-name {
@@ -784,77 +796,6 @@
             </div>
         </div>
 
-        <!-- ===== Map (地圖導覽與景點清單) ===== -->
-        <div id="map" class="tab-content">
-            <div class="calc-card">
-                <div class="spot-title" style="margin-bottom: 12px;">
-                    🗺️ 宮古島全島導覽地圖
-                    <span class="sync-badge">☁️ 雲端同步</span>
-                </div>
-                <img src="images/map.jpg" class="map-img" alt="宮古島全圖" style="margin-top: 0;">
-                <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-top: -6px;">點擊勾選框打勾代表已造訪，字體會轉灰劃掉並即時同步至雲端。</p>
-            </div>
-
-            <div class="calc-card">
-                <div class="check-group">
-                    <h4>1. 宮古島上的十個推薦觀光景點</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_1" onchange="syncMapState('map_1_1')"><label for="map_1_1">1.1. 與那霸前濱海灘 (Yonaha Maehama)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_2" onchange="syncMapState('map_1_2')"><label for="map_1_2">1.2. 東平安名崎</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_3" onchange="syncMapState('map_1_3')"><label for="map_1_3">1.3. 伊良部大橋</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_4" onchange="syncMapState('map_1_4')"><label for="map_1_4">1.4. 池間島與池間大橋</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_5" onchange="syncMapState('map_1_5')"><label for="map_1_5">1.5. 來間島和來間大橋</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_6" onchange="syncMapState('map_1_6')"><label for="map_1_6">1.6. 沙山海灘</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_7" onchange="syncMapState('map_1_7')"><label for="map_1_7">1.7. 八重干瀨</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_8" onchange="syncMapState('map_1_8')"><label for="map_1_8">1.8. 宮古島上的藍洞</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_9" onchange="syncMapState('map_1_9')"><label for="map_1_9">1.9. 牧山展望台</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_10" onchange="syncMapState('map_1_10')"><label for="map_1_10">1.10. 17END (One Seventeen End)</label></div>
-                </div>
-
-                <div class="check-group">
-                    <h4>2. 五個受歡迎的海灘和洞中海灘</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_1" onchange="syncMapState('map_2_1')"><label for="map_2_1">2.1. 新城海岸</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_2" onchange="syncMapState('map_2_2')"><label for="map_2_2">2.2. Imgaya 海洋花園</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_3" onchange="syncMapState('map_2_3')"><label for="map_2_3">2.3. 西吉拉海灘</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_4" onchange="syncMapState('map_2_4')"><label for="map_2_4">2.4. Bora Spring (Bora) 海灘</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_5" onchange="syncMapState('map_2_5')"><label for="map_2_5">2.5. 長山海灘</label></div>
-                </div>
-
-                <div class="check-group">
-                    <h4>3. 下雨天也能玩得開心！宮古島的五個推薦觀光景點</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_1" onchange="syncMapState('map_3_1')"><label for="map_3_1">3.1. 宮古島市熱帶植物園</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_2" onchange="syncMapState('map_3_2')"><label for="map_3_2">3.2. 宮古島市立博物館</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_3" onchange="syncMapState('map_3_3')"><label for="map_3_3">3.3. Ueno 德國文化村</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_4" onchange="syncMapState('map_3_4')"><label for="map_3_4">3.4. 宮古島海底公園</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_5" onchange="syncMapState('map_3_5')"><label for="map_3_5">3.5. 雪鹽博物館</label></div>
-                </div>
-
-                <div class="check-group">
-                    <h4>4. 自然與冒險的最佳境界！五個互動景點</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_1" onchange="syncMapState('map_4_1')"><label for="map_4_1">4.1. 南瓜洞 (藍洞)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_2" onchange="syncMapState('map_4_2')"><label for="map_4_2">4.2. 島尻的紅樹林</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_3" onchange="syncMapState('map_4_3')"><label for="map_4_3">4.3. 西吉拉黃金溫泉</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_4" onchange="syncMapState('map_4_4')"><label for="map_4_4">4.4. 宮古島市體驗工藝村</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_5" onchange="syncMapState('map_4_5')"><label for="map_4_5">4.5. 吉野海岸</label></div>
-                </div>
-
-                <div class="check-group">
-                    <h4>5. 四個上相且隱密的景點</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_1" onchange="syncMapState('map_5_1')"><label for="map_5_1">5.1. 心岩</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_2" onchange="syncMapState('map_5_2')"><label for="map_5_2">5.2. 宮古神社</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_3" onchange="syncMapState('map_5_3')"><label for="map_5_3">5.3. 街道池塘 (通池)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_4" onchange="syncMapState('map_5_4')"><label for="map_5_4">5.4. 西軒那岬</label></div>
-                </div>
-
-                <div class="check-group">
-                    <h4>6. 宮古島可享受的海上活動</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_1" onchange="syncMapState('map_6_1')"><label for="map_6_1">6.1. 浮潛 / 潛水</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_2" onchange="syncMapState('map_6_2')"><label for="map_6_2">6.2. SUP / 獨木舟</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_3" onchange="syncMapState('map_6_3')"><label for="map_6_3">6.3. 探索南瓜洞洞穴 (南瓜形鐘乳石)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_4" onchange="syncMapState('map_6_4')"><label for="map_6_4">6.4. 八重干瀨 (Yabiji) 旅遊</label></div>
-                </div>
-            </div>
-        </div>
-
         <!-- ===== Day 1 (10/21 三) ===== -->
         <div id="day1" class="tab-content">
 			<div class="spot-card">
@@ -884,30 +825,43 @@
             <div class="spot-card">
                 <div class="spot-header">
                     <span class="spot-time">14:00</span>
-                    <a href="https://maps.google.com/?q=Miyakojima+Car+Rental" target="_blank" class="map-link">📍 地圖導航</a>
+                    <a href="https://maps.app.goo.gl/94VyrS2zV17bE8i46 target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🚗 辦理租車取車</div>
                 <img src="images/day/day1-2.jpg" class="spot-img" alt="租車">
-                <div class="spot-desc">搭乘接駁車前往租車門市，確認車況與駕照譯本後開啟自駕之旅。</div>
+                <div class="spot-desc">前往OTSレンタカー下地島空港店，確認車況與駕照譯本後開啟自駕之旅。</div>
             </div>
+			
             <div class="spot-card">
                 <div class="spot-header">
                     <span class="spot-time">15:00</span><span class="spot-time spot-tag">景點</span>
+                    <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
+                </div>
+                <div class="spot-title">✈️ 17END (下地島絕景)</div>
+                <img src="images/day/day1-6.jpg" class="spot-img" alt="17END">
+                <div class="spot-desc">位於跑道盡頭的神秘絕景，退潮時呈現夢幻Tiffany藍淺灘，也是近距離看飛機起降的秘境。</div>
+            </div>
+									
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🌉 伊良部大橋</div>
                 <img src="images/day/day1-3.jpg" class="spot-img" alt="伊良部大橋">
                 <div class="spot-desc">全長3,540公尺，跨越極致夢幻的漸層「宮古藍」海洋，體驗如飛馳於海面上的快感。</div>
             </div>
+			
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">景點</span>
+                    <span class="spot-time">16:30</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Makiyama+Observatory" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🦅 牧山展望台</div>
                 <img src="images/day/day1-4.jpg" class="spot-img" alt="牧山展望台">
                 <div class="spot-desc">位於伊良部島最高點，外型為灰面鷲造型，可全景俯瞰伊良部大橋與宮古本島。</div>
             </div>
+			
             <div class="spot-card">
                 <div class="spot-header">
                     <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
@@ -917,11 +871,14 @@
                 <img src="images/day/day1-5.jpg" class="spot-img" alt="Painagama Beach">
                 <div class="spot-desc">靠近市區的浪漫沙灘，是欣賞夕陽餘暉與感受在地島嶼慢活步調的首選。</div>
             </div>
+			
             <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🍽️ 市區在地風味晚餐</div>
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" class="spot-img" alt="市區晚餐">
-                <div class="spot-desc">在平良市區熱鬧街道享用沖繩傳統家常菜與美味阿古豬料理。</div>
+                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
+                    <a href="https://maps.app.goo.gl/mv5Pw5CyhFZufJ3A8" target="_blank" class="map-link">📍 地圖導航</a>
+				</div>
+                <div class="spot-title">🍽️ 宮古牛焼肉 玉城</div>
+                <img src="images/day/day1-dinner.jpg" class="spot-img" alt="宮古牛焼肉 玉城">
+                <div class="spot-desc">該店以一頭買（整頭牛購入）的方式提供極其稀有、被譽為「幻之和牛」的頂級宮古牛，讓饕客可以品嚐到各種珍貴的稀有部位。</div>
             </div>
             <div class="hotel-badge">🏨 住宿：加州飯店宮古島度假村</div>
         </div>
@@ -984,7 +941,9 @@
                 <div class="spot-desc">獲譽為「東洋第一美海灘」，綿延7公里的純白細沙與漸層湛藍海景。</div>
             </div>
 			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">12:00</span><span class="spot-time food-tag">美食</span></div>
+				<div class="spot-header"><span class="spot-time">12:00</span><span class="spot-time food-tag">美食</span>
+                    <a href="https://maps.app.goo.gl/q8dNLYSGVyd7xg8N6" target="_blank" class="map-link">📍 地圖導航</a>
+				</div>
                 <div class="spot-title">🥩 HARRY’S Shrimp Truck</div>
                 <img src="images/day/day3-lunch.jpg" class="spot-img" alt="HARRY'S">
                 <div class="spot-desc">享用宮古島蝦蝦飯，邊看海景。</div>
@@ -1026,7 +985,8 @@
                 <div class="spot-desc">穿越細微沙丘後即可看見由天然海蝕作用形成的經典拱形珊瑚岩海蝕洞。</div>
             </div>
 			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span></div>
+				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
+				</div>
                 <div class="spot-title">🥩 焼肉なかお</div>
                 <img src="images/day/day3-dinner.jpg" class="spot-img" alt="焼肉">
                 <div class="spot-desc">在飯店附近享用晚餐。</div>
@@ -1061,7 +1021,10 @@
                 <div class="spot-desc">位於跑道盡頭的神秘絕景，退潮時呈現夢幻Tiffany藍淺灘，也是近距離看飛機起降的秘境。</div>
             </div>
 			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">15:00</span><span class="spot-time food-tag">美食</span></div>
+				<div class="spot-header">
+					<span class="spot-time">15:00</span><span class="spot-time food-tag">美食</span>
+                    <a href="https://maps.app.goo.gl/j5KZpXeDKVpDjeQ79" target="_blank" class="map-link">📍 地圖導航</a>
+				</div>
                 <div class="spot-title">🥩 蟹藏</div>
                 <img src="images/day/day4-food.jpg" class="spot-img" alt="蟹藏">
                 <div class="spot-desc">提供青蟹紅樹林導覽體驗與新鮮現蒸紅樹林蟹珍饈。</div>
@@ -1137,9 +1100,16 @@
                 <div class="spot-desc">享受渡假村最後一頓早餐，漫步沙灘並辦理退房手續。</div>
             </div>
             <div class="spot-card">
+                <div class="spot-header"><span class="spot-time">11:00</span>
+                    <a href="https://maps.app.goo.gl/g4TaPVQVyHQq1KDw9" target="_blank" class="map-link">📍 地圖導航</a></div>
+                <div class="spot-title">🚗 伊良部給油所</div>
+                <img src="images/day/day6-3.jpg" class="spot-img" alt="伊良部給油所">
+                <div class="spot-desc">前往加油站加滿油歸還車輛。</div>
+            </div>
+            <div class="spot-card">
                 <div class="spot-header"><span class="spot-time">11:00</span></div>
                 <div class="spot-title">🚗 歸還租車</div>
-                <div class="spot-desc">前往租車公司加滿油歸還車輛，搭乘接駁專車前往下地島機場。</div>
+                <div class="spot-desc">前往租車公司歸還車輛，前往下地島機場。</div>
             </div>
             <div class="spot-card">
                 <div class="spot-header"><span class="spot-time">11:30</span></div>
@@ -1155,7 +1125,78 @@
             </div>
         </div>
 
-        <!-- ===== 美食購物 (合併頁面) ===== -->
+        <!-- ===== Map (地圖導覽與景點清單) ===== -->
+        <div id="map" class="tab-content">
+            <div class="calc-card">
+                <div class="spot-title" style="margin-bottom: 12px;">
+                    🗺️ 宮古島全島導覽地圖
+                    <span class="sync-badge">☁️ 雲端同步</span>
+                </div>
+                <img src="images/map.jpg" class="map-img" alt="宮古島全圖" style="margin-top: 0;">
+                <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-top: -6px;">(打勾代表已造訪)</p>
+            </div>
+
+            <div class="calc-card">
+                <div class="check-group">
+                    <h4>1. 宮古島上的十個推薦觀光景點</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_1" onchange="syncMapState('map_1_1')"><label for="map_1_1">1.1. 與那霸前濱海灘 (Yonaha Maehama)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_2" onchange="syncMapState('map_1_2')"><label for="map_1_2">1.2. 東平安名崎</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_3" onchange="syncMapState('map_1_3')"><label for="map_1_3">1.3. 伊良部大橋</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_4" onchange="syncMapState('map_1_4')"><label for="map_1_4">1.4. 池間島與池間大橋</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_5" onchange="syncMapState('map_1_5')"><label for="map_1_5">1.5. 來間島和來間大橋</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_6" onchange="syncMapState('map_1_6')"><label for="map_1_6">1.6. 沙山海灘</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_7" onchange="syncMapState('map_1_7')"><label for="map_1_7">1.7. 八重干瀨</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_8" onchange="syncMapState('map_1_8')"><label for="map_1_8">1.8. 宮古島上的藍洞</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_9" onchange="syncMapState('map_1_9')"><label for="map_1_9">1.9. 牧山展望台</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_10" onchange="syncMapState('map_1_10')"><label for="map_1_10">1.10. 17END (One Seventeen End)</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>2. 五個受歡迎的海灘和洞中海灘</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_1" onchange="syncMapState('map_2_1')"><label for="map_2_1">2.1. 新城海岸</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_2" onchange="syncMapState('map_2_2')"><label for="map_2_2">2.2. Imgaya 海洋花園</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_3" onchange="syncMapState('map_2_3')"><label for="map_2_3">2.3. 西吉拉海灘</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_4" onchange="syncMapState('map_2_4')"><label for="map_2_4">2.4. Bora Spring (Bora) 海灘</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_5" onchange="syncMapState('map_2_5')"><label for="map_2_5">2.5. 長山海灘</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>3. 下雨天也能玩得開心！宮古島的五個推薦觀光景點</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_1" onchange="syncMapState('map_3_1')"><label for="map_3_1">3.1. 宮古島市熱帶植物園</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_2" onchange="syncMapState('map_3_2')"><label for="map_3_2">3.2. 宮古島市立博物館</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_3" onchange="syncMapState('map_3_3')"><label for="map_3_3">3.3. Ueno 德國文化村</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_4" onchange="syncMapState('map_3_4')"><label for="map_3_4">3.4. 宮古島海底公園</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_5" onchange="syncMapState('map_3_5')"><label for="map_3_5">3.5. 雪鹽博物館</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>4. 自然與冒險的最佳境界！五個互動景點</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_1" onchange="syncMapState('map_4_1')"><label for="map_4_1">4.1. 南瓜洞 (藍洞)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_2" onchange="syncMapState('map_4_2')"><label for="map_4_2">4.2. 島尻的紅樹林</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_3" onchange="syncMapState('map_4_3')"><label for="map_4_3">4.3. 西吉拉黃金溫泉</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_4" onchange="syncMapState('map_4_4')"><label for="map_4_4">4.4. 宮古島市體驗工藝村</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_5" onchange="syncMapState('map_4_5')"><label for="map_4_5">4.5. 吉野海岸</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>5. 四個上相且隱密的景點</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_1" onchange="syncMapState('map_5_1')"><label for="map_5_1">5.1. 心岩</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_2" onchange="syncMapState('map_5_2')"><label for="map_5_2">5.2. 宮古神社</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_3" onchange="syncMapState('map_5_3')"><label for="map_5_3">5.3. 街道池塘 (通池)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_4" onchange="syncMapState('map_5_4')"><label for="map_5_4">5.4. 西軒那岬</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>6. 宮古島可享受的海上活動</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_1" onchange="syncMapState('map_6_1')"><label for="map_6_1">6.1. 浮潛 / 潛水</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_2" onchange="syncMapState('map_6_2')"><label for="map_6_2">6.2. SUP / 獨木舟</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_3" onchange="syncMapState('map_6_3')"><label for="map_6_3">6.3. 探索南瓜洞洞穴 (南瓜形鐘乳石)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_4" onchange="syncMapState('map_6_4')"><label for="map_6_4">6.4. 八重干瀨 (Yabiji) 旅遊</label></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 美食購物 ===== -->
         <div id="food-shopping" class="tab-content">
             <!-- 子區塊 1: 美食 -->
             <div id="food-sub" class="sub-tab-content active">
@@ -1165,7 +1206,7 @@
                         <span class="spot-time food-tag">🥩 宮古牛頂級燒肉</span>
                         <a href="https://maps.google.com/?q=焼肉なかお" target="_blank" class="map-link">📍 地圖導航</a></div>
                     <div class="spot-title">【焼肉なかお】Nakao 宮古牛</div>
-                    <img src="images/food_01.jpg" class="spot-img" alt="宮古牛Nakao">
+                    <img src="images/food_01.jpg" id="food_01" class="spot-img" alt="宮古牛Nakao" onclick="toggleGiftState('food_01')">
                     <div class="spot-desc">專賣極品宮古牛燒肉，肉質油花分佈勻稱，燒烤後入口即化。</div>
                 </div>
 
@@ -1174,7 +1215,7 @@
                         <span class="spot-time food-tag">🍜 老字號宮古麵</span>
                         <a href="https://maps.google.com/?q=古謝そば屋" target="_blank" class="map-link">📍 地圖導航</a></div>
                     <div class="spot-title">【古謝そば屋】蕎麥麵</div>
-                    <img src="images/food_02.jpg" class="spot-img" alt="古謝蕎麥麵屋">
+                    <img src="images/food_02.jpg" id="food_02" class="spot-img" alt="古謝蕎麥麵屋" onclick="toggleGiftState('food_02')">
                     <div class="spot-desc">創立數十年的老字號名店，清甜濃郁的柴魚湯頭配上軟嫩三層肉與燉軟骨。</div>
                 </div>
 
@@ -1183,7 +1224,7 @@
                         <span class="spot-time food-tag">🦀 秘境海鮮</span>					
                         <a href="https://maps.google.com/?q=海鮮悟空" target="_blank" class="map-link">📍 地圖導航</a></div>
                     <div class="spot-title">【海鮮悟空】椰子蟹</div>
-                    <img src="images/food_03.jpg" class="spot-img" alt="海鮮悟空">
+                    <img src="images/food_03.jpg" id="food_03" class="spot-img" alt="海鮮悟空" onclick="toggleGiftState('food_03')">
                     <div class="spot-desc">平良市區熱門名店，可品嚐宮古島特色野生椰子蟹料理與極鮮海鮮丼。</div>
                 </div>
 
@@ -1192,7 +1233,7 @@
                         <span class="spot-time food-tag">🍢 當地風味居酒屋</span>
                         <a href="https://maps.google.com/?q=島おでんたから" target="_blank" class="map-link">📍 地圖導航</a></div>
                     <div class="spot-title">【島おでんたから】居酒屋</div>
-                    <img src="images/food_04.jpg" class="spot-img" alt="島おでんたから">
+                    <img src="images/food_04.jpg" id="food_04" class="spot-img" alt="島おでんたから" onclick="toggleGiftState('food_04')">
                     <div class="spot-desc">以燉煮極致入味的島關東煮與香酥豬腳聞名的超高人氣排隊名店。</div>
                 </div>
 
@@ -1201,7 +1242,7 @@
                         <span class="spot-time food-tag">🦀 蟹肉體驗</span>
                         <a href="https://maps.google.com/?q=蟹蔵+Miyako" target="_blank" class="map-link">📍 地圖導航</a></div>
                     <div class="spot-title">【蟹蔵】</div>
-                    <img src="images/food_05.jpg" class="spot-img" alt="蟹蔵">
+                    <img src="images/food_05.jpg" id="food_05" class="spot-img" alt="蟹蔵" onclick="toggleGiftState('food_05')">
                     <div class="spot-desc">位於伊良部島，提供青蟹紅樹林導覽體驗與新鮮現蒸紅樹林蟹珍饈。</div>
                 </div>
                 
@@ -1210,8 +1251,36 @@
                         <span class="spot-time food-tag">🚌 美式校車餐車</span>
                         <a href="https://maps.google.com/?q=HARRY’S+Shrimp+Truck" target="_blank" class="map-link">📍 地圖導航</a></div>
                     <div class="spot-title">【HARRY’S Shrimp Truck】奶油蒜蝦飯</div>
-                    <img src="images/food_06.jpg" class="spot-img" alt="Blue Turtle Farm Mango Cafe">
+                    <img src="images/food_06.jpg" id="food_06" class="spot-img" alt="Blue Turtle Farm Mango Cafe" onclick="toggleGiftState('food_06')">
                     <div class="spot-desc">主打各式蝦蝦飯，美式校車、藍綠色半露天座位，再加上海岸景色，很有宮古島獨有的悠閒感。</div>
+                </div>
+				
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍜 宮古麵</span>
+                        <a href="https://maps.app.goo.gl/uRfEmToixCsJzgbH9" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【港食堂ニュー浜や】New Hamaya 宮古麵</div>
+                    <img src="images/food_07.jpg" id="food_07" class="spot-img" alt="港食堂ニュー浜や" onclick="toggleGiftState('food_07')">
+                    <div class="spot-desc">打破傳統宮古麵僅用豬骨和柴魚熬湯的印象，這裡加入了蜆（文蛤）、鯖魚、昆布、香菇等熬製出層次豐富的「黃金湯頭」。</div>
+                </div>
+				
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍜 在地小店</span>
+                        <a href="https://maps.app.goo.gl/rWELmknJVFQtJBiz7" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【炭火麺屋 市】宮古蕎麥麵</div>
+                    <img src="images/food_08.jpg" id="food_08" class="spot-img" alt="炭火麺屋 市" onclick="toggleGiftState('food_08')">
+                    <div class="spot-desc">主打兼具在地風味與百元等級高性價比的宮古島蕎麥麵（宮古そば）與自慢炭火燒鳥（烤雞串）。</div>
+                </div>
+				
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍜 頂級涮涮鍋</span>
+                        <a href="https://maps.app.goo.gl/eMiwSV1x4Nu75eyG6" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【燦伊良部島店】豬肉涮涮鍋</div>
+                    <img src="images/food_09.jpg" id="food_09" class="spot-img" alt="燦伊良部島店" onclick="toggleGiftState('food_09')">
+                    <div class="spot-desc">午餐：以宮古蕎麥麵（宮古そば）為核心。
+                <br>晚餐：主打使用宮古鄉里牛與阿古豬、鳳梨豬等三種沖繩在地產名豬的頂級涮涮鍋與壽喜燒。(晚餐要提早一天訂位)</div>
                 </div>
             </div>
 
@@ -1221,10 +1290,42 @@
                 <div class="spot-card food">
                     <div class="spot-header">
                         <span class="spot-time food-tag">🥭 芒果海景咖啡</span>
-                        <a href="https://maps.google.com/?q=Blue+Farm+Mango+Cafe" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【Blue Turtle Farm Mango Café】芒果冰沙</div>
-                    <img src="images/cafe_01.jpg" class="spot-img" alt="Blue Turtle Farm Mango Cafe">
+                        <a href="https://maps.app.goo.gl/iZpQqZcSEtgffSag6" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【Blue Turtle】芒果冰沙</div>
+                    <img src="images/cafe_01.jpg" id="cafe_01" class="spot-img" alt="Blue Turtle" onclick="toggleGiftState('cafe_01')">
                     <div class="spot-desc">自設農場直送新鮮芒果，搭配無敵海景享受濃郁芒果冰沙與精緻甜點。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍕 海景義式餐廳</span>
+                        <a href="https://maps.app.goo.gl/1vZ9SrM3AqkgMzcG7" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【Gelato Cafe Ninufa】</div>
+                    <img src="images/cafe_02.jpg" id="cafe_02" class="spot-img" alt="Gelato Cafe Ninufa" onclick="toggleGiftState('cafe_02')">
+                    <div class="spot-desc">在池間島的絕景中享用正統義式冰淇淋與義式披薩。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 海景隱密風咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/QdBLkSHGkeyTHqoP6" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【LOCO MANGER】宮古牛漢堡排</div>
+                    <img src="images/cafe_03.jpg" id="cafe_03" class="spot-img" alt="LOCO MANGER" onclick="toggleGiftState('cafe_03')">
+                    <div class="spot-desc">可眺望宮古島藍色海洋與伊良部島的絕美咖啡館，由出身法式料理的資深主廚主理，使用宮古島與沖繩當地食材。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 手沖咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/nppZWTLdTFGKCqg36" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【Ningin Coffee】黑糖拿鐵</div>
+                    <img src="images/cafe_04.jpg" id="cafe_04" class="spot-img" alt="Ningin Coffee" onclick="toggleGiftState('cafe_04')">
+                    <div class="spot-desc">店主為每位客人親手手沖咖啡，從磨豆、悶蒸到注水的每一個節奏都恰到好處，主推巴斯克和紅豆奶油吐司，紅豆不會過於甜膩，搭配鹹奶油，好日式的下午茶。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 早午餐咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/w4M8MGUcvANj9CVT8" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【LB CAFE】法式吐司套餐</div>
+                    <img src="images/cafe_05.jpg" id="cafe_05" class="spot-img" alt="LB CAFE" onclick="toggleGiftState('cafe_05')">
+                    <div class="spot-desc">這裡以充滿海島度假風的舒適木質裝潢、美味的早午餐點，以及店外經典的天使翅膀打卡牆而聞名。</div>
                 </div>
             </div>
 
@@ -1335,90 +1436,91 @@
 			
 			<!-- 子區塊 4: 購物 -->
             <div id="gift-sub" class="sub-tab-content">
-                <div class="section-header-title">🎁 伴手禮推薦</div>
+                <div class="section-header-title">🎁 伴手禮推薦 <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-bottom: -6px;">(點擊圖片標記已買到)</p></div>
+				
                 <div class="souvenir-grid">
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_01.jpg" class="souvenir-img" alt="雪鹽白巧克力夾心餅">
+                        <img src="images/gift/gift_01.jpg" id="gift_1" class="souvenir-img" alt="雪鹽白巧克力夾心餅" onclick="toggleGiftState('gift_1')">
                         <div class="souvenir-name">1. 雪鹽白巧克力餅</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_02.jpg" class="souvenir-img" alt="雪鹽法蘭酥">
+                        <img src="images/gift/gift_02.jpg" id="gift_2" class="souvenir-img" alt="雪鹽法蘭酥" onclick="toggleGiftState('gift_2')">
                         <div class="souvenir-name">2. 雪鹽法蘭酥</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_03.jpg" class="souvenir-img" alt="雪鹽薯條">
+                        <img src="images/gift/gift_03.jpg" id="gift_3" class="souvenir-img" alt="雪鹽薯條" onclick="toggleGiftState('gift_3')">
                         <div class="souvenir-name">3. 雪鹽薯條</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_04.jpg" class="souvenir-img" alt="雪鹽費南雪">
+                        <img src="images/gift/gift_04.jpg" id="gift_4" class="souvenir-img" alt="雪鹽費南雪" onclick="toggleGiftState('gift_4')">
                         <div class="souvenir-name">4. 雪鹽費南雪</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_05.jpg" class="souvenir-img" alt="雪鹽費南雪">
+                        <img src="images/gift/gift_05.jpg" id="gift_5" class="souvenir-img" alt="雪鹽金楚糕" onclick="toggleGiftState('gift_5')">
                         <div class="souvenir-name">5. 雪鹽金楚糕</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_06.jpg" class="souvenir-img" alt="雪鹽年輪蛋糕">
+                        <img src="images/gift/gift_06.jpg" id="gift_6" class="souvenir-img" alt="雪鹽年輪蛋糕" onclick="toggleGiftState('gift_6')">
                         <div class="souvenir-name">6. 雪鹽年輪蛋糕</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_07.jpg" class="souvenir-img" alt="雪鹽調味料">
+                        <img src="images/gift/gift_07.jpg" id="gift_7" class="souvenir-img" alt="雪鹽調味料" onclick="toggleGiftState('gift_7')">
                         <div class="souvenir-name">7. 雪鹽調味料</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_08.jpg" class="souvenir-img" alt="雪鹽汽水">
+                        <img src="images/gift/gift_08.jpg" id="gift_8" class="souvenir-img" alt="雪鹽汽水" onclick="toggleGiftState('gift_8')">
                         <div class="souvenir-name">8. 宮古島雪鹽汽水</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_09.jpg" class="souvenir-img" alt="雪鹽肥皂">
+                        <img src="images/gift/gift_09.jpg" id="gift_9" class="souvenir-img" alt="雪鹽肥皂" onclick="toggleGiftState('gift_9')">
                         <div class="souvenir-name">9. 宮古島雪鹽肥皂</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_10.jpg" class="souvenir-img" alt="紅芋塔">
+                        <img src="images/gift/gift_10.jpg" id="gift_10" class="souvenir-img" alt="紅芋塔" onclick="toggleGiftState('gift_10')">
                         <div class="souvenir-name">10. 紅芋塔 / 紅薯塔</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_11.jpg" class="souvenir-img" alt="Monte Doll香蕉蛋糕">
+                        <img src="images/gift/gift_11.jpg" id="gift_11" class="souvenir-img" alt="Monte Doll香蕉蛋糕" onclick="toggleGiftState('gift_11')">
                         <div class="souvenir-name">11. Monte Doll香蕉蛋糕</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_12.jpg" class="souvenir-img" alt="芒果夾心餅乾">
+                        <img src="images/gift/gift_12.jpg" id="gift_12" class="souvenir-img" alt="芒果夾心餅乾" onclick="toggleGiftState('gift_12')">
                         <div class="souvenir-name">12. 芒果夾心餅乾</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_13.jpg" class="souvenir-img" alt="宮古島堅果">
+                        <img src="images/gift/gift_13.jpg" id="gift_13" class="souvenir-img" alt="宮古島堅果" onclick="toggleGiftState('gift_13')">
                         <div class="souvenir-name">13. 宮古島堅果酥</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_14.jpg" class="souvenir-img" alt="守護君周邊">
+                        <img src="images/gift/gift_14.jpg" id="gift_14" class="souvenir-img" alt="守護君周邊" onclick="toggleGiftState('gift_14')">
                         <div class="souvenir-name">14. 守護君周邊商品</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_15.jpg" class="souvenir-img" alt="宮古島帆布袋">
+                        <img src="images/gift/gift_15.jpg" id="gift_15" class="souvenir-img" alt="宮古島帆布袋" onclick="toggleGiftState('gift_15')">
                         <div class="souvenir-name">15. 宮古島帆布袋</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_16.jpg" class="souvenir-img" alt="宮古島磁鐵">
+                        <img src="images/gift/gift_16.jpg" id="gift_16" class="souvenir-img" alt="宮古島磁鐵" onclick="toggleGiftState('gift_16')">
                         <div class="souvenir-name">16. 宮古島磁鐵</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_17.jpg" class="souvenir-img" alt="特色T-shirt">
+                        <img src="images/gift/gift_17.jpg" id="gift_17" class="souvenir-img" alt="特色T-shirt" onclick="toggleGiftState('gift_17')">
                         <div class="souvenir-name">17. 宮古島 T-shirt</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_18.jpg" class="souvenir-img" alt="Blue Seal周邊">
+                        <img src="images/gift/gift_18.jpg" id="gift_18" class="souvenir-img" alt="Blue Seal周邊" onclick="toggleGiftState('gift_18')">
                         <div class="souvenir-name">18. Blue Seal 冰淇淋</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_19.jpg" class="souvenir-img" alt="Orion周邊">
+                        <img src="images/gift/gift_19.jpg" id="gift_19" class="souvenir-img" alt="Orion周邊" onclick="toggleGiftState('gift_19')">
                         <div class="souvenir-name">19. Orion 周邊商品</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_20.jpg" class="souvenir-img" alt="曬黑 Hello Kitty">
+                        <img src="images/gift/gift_20.jpg" id="gift_20" class="souvenir-img" alt="曬黑 Hello Kitty" onclick="toggleGiftState('gift_20')">
                         <div class="souvenir-name">20. 曬黑 Hello Kitty</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_21.jpg" class="souvenir-img" alt="Hydro Flask水壺">
+                        <img src="images/gift/gift_21.jpg" id="gift_21" class="souvenir-img" alt="Hydro Flask水壺" onclick="toggleGiftState('gift_21')">
                         <div class="souvenir-name">21. 下地島 Hydro Flask</div>
                     </div>
                 </div>
@@ -1533,35 +1635,31 @@
                 
                 <div class="check-group">
                     <h4>重要證件與卡片</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c1"><label for="c1">護照 (效期6個月以上)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c2"><label for="c2">台灣駕照正本 + 日文譯本</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c3"><label for="c3">Visit Japan Web QR Code 截圖</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c4"><label for="c4">信用卡 / 日幣現金</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_1"><label for="c1_1">護照 (效期6個月以上)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_2"><label for="c1_2">台灣駕照正本 + 日文譯本</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_3"><label for="c1_3">Visit Japan Web QR Code 截圖</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_4"><label for="c1_4">信用卡 / 日幣現金</label></div>
                 </div>
 
                 <div class="check-group">
                     <h4>水上活動與穿搭</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c5"><label for="c5">泳衣 / 水母衣 / 防曬衣</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c6"><label for="c6">防水袋 / 手機防水套</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c7"><label for="c7">海灘鞋</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c8"><label for="c8">海洋友善防曬乳 / 太陽眼鏡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_1"><label for="c2_1">泳衣 / 水母衣 / 防曬衣</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_2"><label for="c2_2">防水袋 / 手機防水套</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_3"><label for="c2_3">海灘鞋</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_4"><label for="c2_4">海洋友善防曬乳 / 太陽眼鏡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_5"><label for="c2_5">毛巾 / 浴巾</label></div>
                 </div>
 
                 <div class="check-group">
-                    <h4>電子產品與常備藥</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c9"><label for="c9">行動電源 / 充電線</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c10"><label for="c10">日本 eSIM / SIM 卡 / 漫遊</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c11"><label for="c11">暈船藥 / 個人常備藥品</label></div>
+                    <h4>個人用品及電子產品</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_1"><label for="c3_1">行動電源 / 充電線</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_2"><label for="c3_2">日本 eSIM / SIM 卡 / 漫遊</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_3"><label for="c3_3">暈船藥 / 個人常備藥品</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_4"><label for="c3_4">換洗衣物</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_5"><label for="c3_5">保養品</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_6"><label for="c3_6">牙膏 / 牙刷</label></div>
                 </div>
 				
-                <div class="check-group">
-                    <h4>個人用品</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c12"><label for="c12">換洗衣物</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c13"><label for="c13">保養品</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c14"><label for="c14">牙膏 / 牙刷</label></div>
-                </div>
-				
-				<div class="spot-title" style="margin-bottom: 16px;">❤️ 許願清單</div>
             </div>
         </div>
 
@@ -1659,19 +1757,40 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* ===== 地圖 Spot 雲端同步邏輯 (Sheet: MAP) ===== */
+        /* ===== 地圖 Spot 與 伴手禮 雲端同步邏輯 (Sheet: MAP) ===== */
         async function fetchMapStateFromCloud() {
             try {
                 let res = await fetch(`${API_URL}?targetSheet=MAP`);
                 let data = await res.json();
                 if (Array.isArray(data)) {
                     data.forEach(item => {
-                        const el = document.getElementById(item.id);
-                        if (el) el.checked = (item.checked === true || item.checked === "true");
+                        const isChecked = (item.checked === true || item.checked === "true");
+                        if (item.id && item.id.startsWith('gift_')) {
+                            const imgEl = document.getElementById(item.id);
+                            if (imgEl) {
+                                if (isChecked) imgEl.classList.add('checked');
+                                else imgEl.classList.remove('checked');
+                            }
+                        } else if (item.id && item.id.startsWith('food_')) {
+                            const imgEl = document.getElementById(item.id);
+                            if (imgEl) {
+                                if (isChecked) imgEl.classList.add('checked');
+                                else imgEl.classList.remove('checked');
+                            }
+                        } else if (item.id && item.id.startsWith('cafe_')) {
+                            const imgEl = document.getElementById(item.id);
+                            if (imgEl) {
+                                if (isChecked) imgEl.classList.add('checked');
+                                else imgEl.classList.remove('checked');
+                            }
+                        } else {
+                            const el = document.getElementById(item.id);
+                            if (el) el.checked = isChecked;
+                        }
                     });
                 }
             } catch (e) {
-                console.error("讀取地圖點位雲端資料失敗:", e);
+                console.error("讀取地圖/伴手禮點位雲端資料失敗:", e);
             }
         }
 
@@ -1694,6 +1813,39 @@
                 console.error("更新地圖點位狀態失敗:", e);
             }
         }
+		
+		/* 伴手禮點擊切換狀態與同步雲端 */
+        async function toggleGiftState(id) {
+            const imgEl = document.getElementById(id);
+            if (!imgEl) return;
+            
+            imgEl.classList.toggle('checked');
+            const isChecked = imgEl.classList.contains('checked');
+
+            const payload = {
+                targetSheet: "MAP",
+                id: id,
+                checked: isChecked
+            };
+
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (e) {
+                console.error("更新伴手禮狀態失敗:", e);
+            }
+        }
+
+        // 初始化讀取雲端狀態
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchMapStateFromCloud();
+            fetchExpensesFromCloud();
+            renderMembersUI();
+        });
 
         let members = ['Andy', 'Pink'];
         let expenses = [];
