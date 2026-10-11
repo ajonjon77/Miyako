@@ -1708,7 +1708,14 @@
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycby4WhR_LgEhlAyJ-FbdL-ZN3svwqdJwiDaMwkyBxam36rt7Xvz4bzDsaD-klxBfERzzhg/exec";
 
-        document.getElementById('expDate').value = '2026-10-21';
+        
+		/* ===== 分帳/消費日期預設為當日 ===== */
+		const today = new Date();
+		const year = today.getFullYear();
+		const month = String(today.getMonth() + 1).padStart(2, '0');
+		const day = String(today.getDate()).padStart(2, '0');
+		document.getElementById('expDate').value = `${year}-${month}-${day}`;
+		// document.getElementById('expDate').value = '2026-10-21';
 
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
