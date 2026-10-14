@@ -172,17 +172,16 @@
 		
 		.checkin-btn {
 			display: inline-block;
-			background-color: #0284c7; /* 按鈕背景顏色 */
-			color: #ffffff;            /* 文字顏色 */
-			padding: 6px 10px;        /* 內圍留白 (上下 左右) */
-			text-decoration: none;     /* 移除超連結預設的下劃線 */
-			border-radius: 4px;        /* 圓角邊框 */
+			background-color: #0284c7;
+			color: #ffffff;
+			padding: 6px 10px;
+			text-decoration: none;
+			border-radius: 4px;
 			font-size: 13px;
 			font-weight: bold;
 			transition: background-color 0.2s;
 		}
 
-		/* 滑鼠懸停時變深色 */
 		.checkin-btn:hover {
 			background-color: #0369a1;
 		}
@@ -264,6 +263,23 @@
             border: 1px solid var(--border-light);
             box-shadow: 0 4px 12px rgba(2, 132, 199, 0.04);
             position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+		
+        .spot-card.draggable-mode {
+            cursor: grab;
+            border: 2px dashed var(--accent-sky);
+        }
+        .spot-card.draggable-mode:active {
+            cursor: grabbing;
+        }
+        .spot-card.dragging {
+            opacity: 0.4;
+            background: #E0F2FE;
+        }
+        .spot-card.drag-over {
+            border-top: 3px solid var(--accent-ocean);
+            background: #F0F9FF;
         }
 
         .spot-header {
@@ -327,7 +343,6 @@
             margin: 12px 0;
         }
 		
-		/* 美食餐廳點擊後變暗灰色樣式 */
         .spot-img.checked {
             filter: grayscale(100%) brightness(50%);
             opacity: 0.6;
@@ -341,6 +356,7 @@
             padding: 12px;
             border-radius: 4px;
             border-left: 3px solid var(--accent-ocean);
+			white-space: pre-line;
         }
 
         .section-header-title {
@@ -383,7 +399,6 @@
             margin-bottom: 6px;
         }
 		
-		/* 伴手禮購買後變暗灰色樣式 */
         .souvenir-img.checked {
             filter: grayscale(100%) brightness(50%);
             opacity: 0.6;
@@ -441,7 +456,6 @@
             flex: 1;
             transition: all 0.2s ease;
         }
-        /* Checklist 與 Map 的項目打勾後, 文字變為灰色 + 刪除線 */
         .checkbox-wrapper input[type="checkbox"]:checked + label {
             color: #94A3B8;
             text-decoration: line-through;
@@ -508,10 +522,6 @@
 
 		.form-row #totalAmountGroup {
 			flex: 1;
-		}
-
-		.form-group .form-control {
-			width: 100%;
 		}
 
         .member-tags {
@@ -798,331 +808,80 @@
 
         <!-- ===== Day 1 (10/21 三) ===== -->
         <div id="day1" class="tab-content">
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">07:30</span></div>
-                <div class="spot-title">🚗 出發</div>
-                <div class="spot-desc">送機服務司機家門口接送，準備前往桃園機場囉。</div>
-			</div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">08:30</span></div>
-                <div class="spot-title">🚗 抵達桃園機場</div>
-                <div class="spot-desc">抵達桃園機場，到航空公司櫃檯辦理行李托運準備出境。</div>
-			</div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">10:30</span></div>
-                <div class="spot-title">✈️ 飛機起飛</div>
-                <div class="spot-desc">找到座位帶著好心情，準備飛往宮古島囉。</div>
-			</div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">13:00</span>
-                    <a href="https://maps.google.com/?q=Shimojishima+Airport" target="_blank" class="map-link">📍 地圖導航</a>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+                <h3 style="font-size:14px; color:var(--accent-ocean);">🌊 Day 1 行程表 <span class="sync-badge">☁️ 雲端同步</span></h3>
+                <div style="display:flex; gap:6px;">
+                    <button id="editToggleBtn-day1" onclick="toggleEditMode('day1')" style="padding: 6px 10px; background:#475569; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">✏️ 編輯行程</button>
+                    <button id="saveOrderBtn-day1" onclick="saveDayOrder('day1')" style="display:none; padding: 6px 10px; background:#047857; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">💾 儲存排序</button>
+                    <button onclick="openScheduleModal('day1')" style="padding: 6px 12px; background:var(--accent-ocean); color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">➕ 新增行程</button>
                 </div>
-                <div class="spot-title">🛬 抵達下地島機場</div>
-                <img src="images/day/day1-1.jpg" class="spot-img" alt="下地島機場">
-                <div class="spot-desc">順利抵達充滿渡假氛圍的下地島機場，辦理入境並提取行李。</div>
             </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">14:00</span>
-                    <a href="https://maps.app.goo.gl/94VyrS2zV17bE8i46 target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🚗 辦理租車取車</div>
-                <img src="images/day/day1-2.jpg" class="spot-img" alt="租車">
-                <div class="spot-desc">前往OTSレンタカー下地島空港店，確認車況與駕照譯本後開啟自駕之旅。</div>
-            </div>
-			
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">15:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">✈️ 17END (下地島絕景)</div>
-                <img src="images/day/day1-6.jpg" class="spot-img" alt="17END">
-                <div class="spot-desc">位於跑道盡頭的神秘絕景，退潮時呈現夢幻Tiffany藍淺灘，也是近距離看飛機起降的秘境。</div>
-            </div>
-									
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌉 伊良部大橋</div>
-                <img src="images/day/day1-3.jpg" class="spot-img" alt="伊良部大橋">
-                <div class="spot-desc">全長3,540公尺，跨越極致夢幻的漸層「宮古藍」海洋，體驗如飛馳於海面上的快感。</div>
-            </div>
-			
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">16:30</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Makiyama+Observatory" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🦅 牧山展望台</div>
-                <img src="images/day/day1-4.jpg" class="spot-img" alt="牧山展望台">
-                <div class="spot-desc">位於伊良部島最高點，外型為灰面鷲造型，可全景俯瞰伊良部大橋與宮古本島。</div>
-            </div>
-			
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Painagama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌅 Painagama Beach 海邊散步</div>
-                <img src="images/day/day1-5.jpg" class="spot-img" alt="Painagama Beach">
-                <div class="spot-desc">靠近市區的浪漫沙灘，是欣賞夕陽餘暉與感受在地島嶼慢活步調的首選。</div>
-            </div>
-			
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
-                    <a href="https://maps.app.goo.gl/mv5Pw5CyhFZufJ3A8" target="_blank" class="map-link">📍 地圖導航</a>
-				</div>
-                <div class="spot-title">🍽️ 宮古牛焼肉 玉城</div>
-                <img src="images/day/day1-dinner.jpg" class="spot-img" alt="宮古牛焼肉 玉城">
-                <div class="spot-desc">該店以一頭買（整頭牛購入）的方式提供極其稀有、被譽為「幻之和牛」的頂級宮古牛，讓饕客可以品嚐到各種珍貴的稀有部位。</div>
-            </div>
-            <div class="hotel-badge">🏨 住宿：加州飯店宮古島度假村</div>
+            <div id="scheduleList-day1">載入中...</div>
         </div>
 
         <!-- ===== Day 2 (10/22 四) ===== -->
         <div id="day2" class="tab-content">
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">上午 (約3小時)</span><span class="spot-time spot-tag">活動</span>
-                    <a href="https://maps.google.com/?q=Yabiji" target="_blank" class="map-link">📍 地圖導航</a>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+                <h3 style="font-size:14px; color:var(--accent-ocean);">🌊 Day 2 行程表 <span class="sync-badge">☁️ 雲端同步</span></h3>
+                <div style="display:flex; gap:6px;">
+                    <button id="editToggleBtn-day2" onclick="toggleEditMode('day2')" style="padding: 6px 10px; background:#475569; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">✏️ 編輯行程</button>
+                    <button id="saveOrderBtn-day2" onclick="saveDayOrder('day2')" style="display:none; padding: 6px 10px; background:#047857; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">💾 儲存排序</button>
+                    <button onclick="openScheduleModal('day2')" style="padding: 6px 12px; background:var(--accent-ocean); color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">➕ 新增行程</button>
                 </div>
-                <div class="spot-title">🤿 八重干瀨 / 藍洞浮潛</div>
-                <img src="images/day/day2-1.jpg" class="spot-img" alt="浮潛">
-                <div class="spot-desc">搭船前往日本最大規模的珊瑚礁群八重干瀨，深入透亮海底與熱帶魚及海龜共遊。</div>
             </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-time spot-tag">活動</span></div>
-                <div class="spot-title">🏄‍♂️ SUP 或 獨木舟水上體驗</div>
-                <img src="images/day/day2-2.jpg" class="spot-img" alt="SUP體驗">
-                <div class="spot-desc">站在立槳上滑行於清澈見底的海面上，捕捉令人屏息的海島寫真。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">☕ 下午海景咖啡廳</div>
-                <img src="images/day/day2-cafe.jpg" class="spot-img" alt="海景咖啡">
-                <div class="spot-desc">水上活動後找間臨海咖啡館，享受特調芒果飲品與悠揚樂聲。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Higashi+Hennazaki" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌇 東平安名崎 觀夕</div>
-                <img src="images/day/day2-3.jpg" class="spot-img" alt="東平安名崎">
-                <div class="spot-desc">長達2公里的海蝕岬角，壯麗陡峭的崖壁與浪漫落日餘暉相映成趣。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🍻 島居酒屋晚餐</div>
-                <img src="images/day/day2-dinner.jpg" class="spot-img" alt="居酒屋">
-                <div class="spot-desc">沉浸在三線琴演奏與沖繩民謠氛圍中，搭配新鮮海鮮與冰涼啤酒。</div>
-            </div>
-            <div class="hotel-badge">🏨 住宿：加州飯店宮古島度假村</div>
+            <div id="scheduleList-day2">載入中...</div>
         </div>
 
         <!-- ===== Day 3 (10/23 五) ===== -->
         <div id="day3" class="tab-content">
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">10:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🥩 早餐</div>
-                <div class="spot-desc">在飯店附近享用早餐。</div>
-			</div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">11:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Yonaha+Maehama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+                <h3 style="font-size:14px; color:var(--accent-ocean);">🌊 Day 3 行程表 <span class="sync-badge">☁️ 雲端同步</span></h3>
+                <div style="display:flex; gap:6px;">
+                    <button id="editToggleBtn-day3" onclick="toggleEditMode('day3')" style="padding: 6px 10px; background:#475569; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">✏️ 編輯行程</button>
+                    <button id="saveOrderBtn-day3" onclick="saveDayOrder('day3')" style="display:none; padding: 6px 10px; background:#047857; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">💾 儲存排序</button>
+                    <button onclick="openScheduleModal('day3')" style="padding: 6px 12px; background:var(--accent-ocean); color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">➕ 新增行程</button>
                 </div>
-                <div class="spot-title">🏖️ 與那霸前濱海灘</div>
-                <img src="images/day/day3-1.jpg" class="spot-img" alt="與那霸前濱">
-                <div class="spot-desc">獲譽為「東洋第一美海灘」，綿延7公里的純白細沙與漸層湛藍海景。</div>
             </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">12:00</span><span class="spot-time food-tag">美食</span>
-                    <a href="https://maps.app.goo.gl/q8dNLYSGVyd7xg8N6" target="_blank" class="map-link">📍 地圖導航</a>
-				</div>
-                <div class="spot-title">🥩 HARRY’S Shrimp Truck</div>
-                <img src="images/day/day3-lunch.jpg" class="spot-img" alt="HARRY'S">
-                <div class="spot-desc">享用宮古島蝦蝦飯，邊看海景。</div>
-			</div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">14:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Kurima+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌉 來間大橋 & 來間島小鎮</div>
-                <img src="images/day/day3-2.jpg" class="spot-img" alt="來間大橋">
-                <div class="spot-desc">穿過1,690公尺長的跨海大橋，前往質感文青雜貨小店與小島咖啡館。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">15:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Ryugujo+Observatory" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🏯 龍宮城展望台</div>
-                <img src="images/day/day3-3.jpg" class="spot-img" alt="龍宮城展望台">
-                <div class="spot-desc">仿造龍宮風格建造的三層樓展望台，此處是俯瞰與那霸前濱海灘的絕佳視角。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">參觀</span>
-                    <a href="https://maps.google.com/?q=Yukisio+Museum" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🧂 雪鹽博物館</div>
-                <img src="images/day/day3-4.jpg" class="spot-img" alt="雪鹽博物館">
-                <div class="spot-desc">深入認識宮古島金氏世界紀錄的雪鹽製程，別忘了現場品嚐著名的雪鹽霜淇淋！</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Sunayama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">⛰️ 砂山海灘</div>
-                <img src="images/day/day3-5.jpg" class="spot-img" alt="砂山海灘">
-                <div class="spot-desc">穿越細微沙丘後即可看見由天然海蝕作用形成的經典拱形珊瑚岩海蝕洞。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
-				</div>
-                <div class="spot-title">🥩 焼肉なかお</div>
-                <img src="images/day/day3-dinner.jpg" class="spot-img" alt="焼肉">
-                <div class="spot-desc">在飯店附近享用晚餐。</div>
-			</div>
-            <div class="hotel-badge">🏨 住宿：加州飯店宮古島度假村</div>
+            <div id="scheduleList-day3">載入中...</div>
         </div>
 
         <!-- ===== Day 4 (10/24 六) ===== -->
         <div id="day4" class="tab-content">
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">11:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🥩 古謝そば屋</div>
-                <img src="images/day/day4-lunch.jpg" class="spot-img" alt="古謝そば屋">
-                <div class="spot-desc">吃當地的十年老店蕎麥麵。</div>
-			</div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">11:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Toriike+Pond" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌀 通池</div>
-                <img src="images/day/day4-2.jpg" class="spot-img" alt="通池">
-                <div class="spot-desc">日本國家指定天然紀念物，兩個圓形池塘在水下相通並直連大海，散發深邃神秘氣息。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">13:30</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=17END" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">✈️ 17END (下地島絕景)</div>
-                <img src="images/day/day4-1.jpg" class="spot-img" alt="17END">
-                <div class="spot-desc">位於跑道盡頭的神秘絕景，退潮時呈現夢幻Tiffany藍淺灘，也是近距離看飛機起降的秘境。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header">
-					<span class="spot-time">15:00</span><span class="spot-time food-tag">美食</span>
-                    <a href="https://maps.app.goo.gl/j5KZpXeDKVpDjeQ79" target="_blank" class="map-link">📍 地圖導航</a>
-				</div>
-                <div class="spot-title">🥩 蟹藏</div>
-                <img src="images/day/day4-food.jpg" class="spot-img" alt="蟹藏">
-                <div class="spot-desc">提供青蟹紅樹林導覽體驗與新鮮現蒸紅樹林蟹珍饈。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Sawada+Beach" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🪨 佐和田之濱</div>
-                <img src="images/day/day4-3.jpg" class="spot-img" alt="佐和田之濱">
-                <div class="spot-desc">入選「日本海灘百選」，海面上散落著1771年大地震海嘯留下的無數巨大岩石。</div>
-            </div>
-            <div class="spot-card shopping">
-                <div class="spot-header"><span class="spot-time shop-tag">採買行程</span></div>
-                <div class="spot-title">🛍️ 宮古島購物血拼巡禮</div>
-                <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=600&q=80" class="spot-img" alt="購物">
-                <div class="spot-desc">
-                    • <b>島之驛宮古</b>：伴手禮、在地水果<br>
-                    • <b>唐吉訶德 Don Quijote</b>：藥妝、零食<br>
-                    • <b>AEON 超市</b>：日本當季水果、日用品
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+                <h3 style="font-size:14px; color:var(--accent-ocean);">🌊 Day 4 行程表 <span class="sync-badge">☁️ 雲端同步</span></h3>
+                <div style="display:flex; gap:6px;">
+                    <button id="editToggleBtn-day4" onclick="toggleEditMode('day4')" style="padding: 6px 10px; background:#475569; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">✏️ 編輯行程</button>
+                    <button id="saveOrderBtn-day4" onclick="saveDayOrder('day4')" style="display:none; padding: 6px 10px; background:#047857; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">💾 儲存排序</button>
+                    <button onclick="openScheduleModal('day4')" style="padding: 6px 12px; background:var(--accent-ocean); color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">➕ 新增行程</button>
                 </div>
             </div>
-            <div class="hotel-badge">🏨 住宿：加州飯店宮古島度假村</div>
+            <div id="scheduleList-day4">載入中...</div>
         </div>
 
         <!-- ===== Day 5 (10/25 日) ===== -->
         <div id="day5" class="tab-content">
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">10:00</span></div>
-                <div class="spot-title">🏨 市區飯店退房</div>
-                <div class="spot-desc">收拾行李準備前往東急渡假村，體驗宮古島的度假感。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">11:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🥩 午餐</div>
-                <div class="spot-desc">在市區享用美味午餐。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">14:00</span>
-                    <a href="https://maps.google.com/?q=Miyako+Tokyu+Hotel" target="_blank" class="map-link">📍 地圖導航</a>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+                <h3 style="font-size:14px; color:var(--accent-ocean);">🌊 Day 5 行程表 <span class="sync-badge">☁️ 雲端同步</span></h3>
+                <div style="display:flex; gap:6px;">
+                    <button id="editToggleBtn-day5" onclick="toggleEditMode('day5')" style="padding: 6px 10px; background:#475569; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">✏️ 編輯行程</button>
+                    <button id="saveOrderBtn-day5" onclick="saveDayOrder('day5')" style="display:none; padding: 6px 10px; background:#047857; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">💾 儲存排序</button>
+                    <button onclick="openScheduleModal('day5')" style="padding: 6px 12px; background:var(--accent-ocean); color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">➕ 新增行程</button>
                 </div>
-                <div class="spot-title">🏨 宮古島東急飯店&度假村</div>
-                <img src="images/day/day5-3.jpg" class="spot-img" alt="東急度假村">
-                <div class="spot-desc">享受奢華的海島放鬆時間！飯店直通與那霸前濱海灘，享受私人泳池、SPA與花園散步。</div>
             </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">15:00</span></div>
-                <div class="spot-title">☀️ 渡假村私人泳池</div>
-                <img src="images/day/day5-4.jpg" class="spot-img" alt="渡假村私人泳池">
-                <div class="spot-desc">享受渡假村泳池。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">17:00</span></div>
-                <div class="spot-title">☀️ 沙灘走走看夕陽</div>
-                <div class="spot-desc">在飯店外沙灘走走拍照，享受夕陽美景。</div>
-            </div>
-            <div class="spot-card">
-				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🍷 渡假村奢華晚宴</div>
-                <img src="images/day/day5-dinner.jpg" class="spot-img" alt="渡假村晚餐">
-                <div class="spot-desc">在飯店附設主廚餐廳品嚐高品質宮古牛燒肉或精致法式料理，為旅程畫下美好句點。</div>
-            </div>
-            <div class="hotel-badge">🏨 住宿：宮古島東急飯店&度假村</div>
+            <div id="scheduleList-day5">載入中...</div>
         </div>
 
         <!-- ===== Day 6 (10/26 一) ===== -->
         <div id="day6" class="tab-content">
-            <div class="spot-card">
-				<div class="spot-header"><span class="spot-time">09:00</span></div>
-                <div class="spot-title">☀️ 晨間悠閒時刻與退房</div>
-                <img src="images/day/day6-1.jpg" class="spot-img" alt="渡假村早餐">
-                <div class="spot-desc">享受渡假村最後一頓早餐，漫步沙灘並辦理退房手續。</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+                <h3 style="font-size:14px; color:var(--accent-ocean);">🌊 Day 6 行程表 <span class="sync-badge">☁️ 雲端同步</span></h3>
+                <div style="display:flex; gap:6px;">
+                    <button id="editToggleBtn-day6" onclick="toggleEditMode('day6')" style="padding: 6px 10px; background:#475569; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">✏️ 編輯行程</button>
+                    <button id="saveOrderBtn-day6" onclick="saveDayOrder('day6')" style="display:none; padding: 6px 10px; background:#047857; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">💾 儲存排序</button>
+                    <button onclick="openScheduleModal('day6')" style="padding: 6px 12px; background:var(--accent-ocean); color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">➕ 新增行程</button>
+                </div>
             </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">11:00</span>
-                    <a href="https://maps.app.goo.gl/g4TaPVQVyHQq1KDw9" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">🚗 伊良部給油所</div>
-                <img src="images/day/day6-3.jpg" class="spot-img" alt="伊良部給油所">
-                <div class="spot-desc">前往加油站加滿油歸還車輛。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">11:00</span></div>
-                <div class="spot-title">🚗 歸還租車</div>
-                <div class="spot-desc">前往租車公司歸還車輛，前往下地島機場。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">11:30</span></div>
-                <div class="spot-title">🛍️ 下地島機場美食購物</div>
-                <img src="images/day/day6-2.jpg" class="spot-img" alt="下地島機場餐廳">
-                <div class="spot-desc">下地島機場享用午餐，悠閒採購機場伴手禮。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">14:00</span></div>
-                <div class="spot-title">✈️ 星宇航空 飛抵台北</div>
-                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" class="spot-img" alt="返航">
-                <div class="spot-desc">14:00 由下地島起飛，預計 14:10 順利抵達桃園國際機場第一航廈。</div>
-            </div>
+            <div id="scheduleList-day6">載入中...</div>
         </div>
 
         <!-- ===== Map (地圖導覽與景點清單) ===== -->
@@ -1676,6 +1435,50 @@
         </div>
 
     </div>
+	
+	<!-- 行程編輯 Modal -->
+    <div id="scheduleModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:200; align-items:center; justify-content:center;">
+        <div style="background:white; width:90%; max-width:400px; padding:20px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+            <div class="spot-title" id="modalTitle" style="margin-bottom:12px;">➕ 新增行程項目</div>
+            <input type="hidden" id="editScheduleRow">
+            <input type="hidden" id="editScheduleDay">
+            <div class="form-group">
+                <label>時間</label>
+                <input type="text" id="schTime" class="form-control" placeholder="例如：10:00 或 早上">
+            </div>
+            <div class="form-group">
+                <label>標籤類型</label>
+                <select id="schTagType" class="form-control">
+                    <option value="">無標籤</option>
+                    <option value="spot-tag">景點 (綠色)</option>
+                    <option value="food-tag">美食 (橘色)</option>
+                    <option value="shop-tag">購物 (深綠)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>標籤文字</label>
+                <input type="text" id="schTagText" class="form-control" placeholder="例如：停留約45分鐘 / 午餐推薦">
+            </div>
+            <div class="form-group">
+                <label>行程標題</label>
+                <input type="text" id="schTitle" class="form-control" placeholder="例如：📚 台東大學圖書館">
+            </div>
+            <div class="form-group">
+                <label>Google 地圖連結 (選填)</label>
+                <input type="text" id="schMap" class="form-control" placeholder="https://maps.google.com/?q=...">
+            </div>
+            <div class="form-group">
+                <label>圖片網址 (選填)</label>
+                <input type="text" id="schImg" class="form-control" placeholder="images/day/day1-2.jpg">
+            </div>
+            <div class="form-group">
+                <label>詳細說明</label>
+                <textarea id="schDesc" class="form-control" rows="3" placeholder="行程介紹..."></textarea>
+            </div>
+            <button class="btn-primary" onclick="saveScheduleItem()">儲存行程</button>
+            <button type="button" onclick="closeScheduleModal()" style="width:100%; margin-top:8px; padding:10px; background:#94A3B8; color:white; border:none; border-radius:6px; font-size:13px; cursor:pointer;">取消</button>
+        </div>
+    </div>
 
     <!-- Bottom Nav -->
     <div class="bottom-nav">
@@ -1708,15 +1511,22 @@
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycby4WhR_LgEhlAyJ-FbdL-ZN3svwqdJwiDaMwkyBxam36rt7Xvz4bzDsaD-klxBfERzzhg/exec";
 
-        
 		/* ===== 分帳/消費日期預設為當日 ===== */
 		const today = new Date();
 		const year = today.getFullYear();
 		const month = String(today.getMonth() + 1).padStart(2, '0');
 		const day = String(today.getDate()).padStart(2, '0');
-		document.getElementById('expDate').value = `${year}-${month}-${day}`;
-		// document.getElementById('expDate').value = '2026-10-21';
-
+		document.getElementById('expDate').value = `${year}-${month}-${day}`;		
+		
+        let editModeState = {
+            day1: false,
+            day2: false,
+            day3: false,
+            day4: false,
+            day5: false,
+            day6: false
+        };
+		
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(c => c.classList.remove('active'));
@@ -1775,7 +1585,306 @@
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+		
+		/* ===== 行程 Schedule 雲端同步與拖曳排序邏輯 (Sheet: SCHEDULE) ===== */
+        let schedules = [];
+        let modifiedDays = new Set();
 
+        async function fetchSchedulesFromCloud() {
+            try {
+                let res = await fetch(`${API_URL}?targetSheet=SCHEDULE`);
+                let data = await res.json();
+                if (Array.isArray(data)) {
+                    schedules = data.map((item, index) => ({
+                        ...item,
+                        row: item.row || (index + 2)
+                    }));
+                    ['day1', 'day2', 'day3', 'day4', 'day5', 'day6'].forEach(d => {
+                        modifiedDays.delete(d);
+                        const btn = document.getElementById(`saveOrderBtn-${d}`);
+                        if (btn) btn.style.display = 'none';
+                    });
+                    renderSchedules();
+                }
+            } catch (e) {
+                console.error("讀取行程資料失敗:", e);
+                ['day1', 'day2', 'day3', 'day4', 'day5', 'day6'].forEach(d => {
+                    document.getElementById(`scheduleList-${d}`).innerHTML = '讀取雲端行程失敗。';
+                });
+            }
+        }
+
+        function toggleEditMode(day) {
+            editModeState[day] = !editModeState[day];
+            const btn = document.getElementById(`editToggleBtn-${day}`);
+            if (editModeState[day]) {
+                btn.innerText = "🔒 關閉編輯";
+                btn.style.background = "#0284C7";
+            } else {
+                btn.innerText = "✏️ 編輯行程";
+                btn.style.background = "#475569";
+            }
+            renderSchedules();
+        }
+
+        function renderSchedules() {
+            ['day1', 'day2', 'day3', 'day4', 'day5', 'day6'].forEach(day => {
+                const container = document.getElementById(`scheduleList-${day}`);
+                if (!container) return;
+                const dayItems = schedules.filter(s => s.day === day);
+                const isEditing = editModeState[day];
+
+                if (dayItems.length === 0) {
+                    container.innerHTML = '<div style="color:var(--text-secondary); text-align:center; padding:12px 0;">尚無行程紀錄，點擊上方按鈕新增！</div>';
+                    return;
+                }
+
+                let html = '';
+                dayItems.forEach((item, index) => {
+                    let tagHtml = item.tagText ? `<span class="spot-time ${item.tagType || ''}">${item.tagText}</span>` : '';
+                    let mapHtml = item.mapUrl ? `<a href="${item.mapUrl}" target="_blank" class="map-link">📍 地圖</a>` : '';
+                    let imgHtml = item.imgUrl ? `<img src="${item.imgUrl}" class="spot-img" alt="${item.title}">` : '';
+
+                    let draggableAttr = isEditing ? 'draggable="true"' : 'draggable="false"';
+                    let modeClass = isEditing ? 'draggable-mode' : '';
+
+                    let actionsHtml = isEditing ? `
+                        <div style="margin-top:10px; display:flex; justify-content:flex-end; gap:6px;">
+                            <button class="action-btn btn-edit" onclick="editSchedule(${item.row})">編輯</button>
+                            <button class="action-btn btn-delete" onclick="deleteSchedule(${item.row})">刪除</button>
+                        </div>
+                    ` : '';
+
+                    html += `
+                        <div class="spot-card ${modeClass}" ${draggableAttr} data-index="${index}" data-row="${item.row}" ondragstart="onDragStart(event)" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event, '${day}', ${index})">
+                            <div class="spot-header">
+                                <span class="spot-time">${item.time}</span>
+                                ${tagHtml}
+                                ${mapHtml}
+                            </div>
+                            <div class="spot-title">${item.title}</div>
+                            ${imgHtml}
+                            <div class="spot-desc">${item.desc}</div>
+                            ${actionsHtml}
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            });
+        }
+
+        let draggedIndex = null;
+
+        function onDragStart(event) {
+            const card = event.target.closest('.spot-card');
+            if (!card) return;
+            draggedIndex = parseInt(card.getAttribute('data-index'));
+            event.dataTransfer.effectAllowed = 'move';
+            card.classList.add('dragging');
+        }
+
+        function onDragOver(event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'move';
+            const card = event.target.closest('.spot-card');
+            if (card) card.classList.add('drag-over');
+        }
+
+        function onDragLeave(event) {
+            const card = event.target.closest('.spot-card');
+            if (card) card.classList.remove('drag-over');
+        }
+
+        function onDrop(event, day, targetIndex) {
+            event.preventDefault();
+            const card = event.target.closest('.spot-card');
+            if (card) card.classList.remove('drag-over');
+
+            if (draggedIndex === null || draggedIndex === targetIndex) return;
+
+            let dayItems = schedules.filter(s => s.day === day);
+            let movedItem = dayItems.splice(draggedIndex, 1)[0];
+            dayItems.splice(targetIndex, 0, movedItem);
+
+            let otherItems = schedules.filter(s => s.day !== day);
+            schedules = [...otherItems, ...dayItems];
+
+            modifiedDays.add(day);
+            document.getElementById(`saveOrderBtn-${day}`).style.display = 'inline-block';
+            renderSchedules();
+            draggedIndex = null;
+        }
+
+        async function saveDayOrder(day) {
+            const btn = document.getElementById(`saveOrderBtn-${day}`);
+            btn.disabled = true;
+            btn.innerText = "⏳ 儲存中...";
+
+            let dayItems = schedules.filter(s => s.day === day);
+            let orderedRows = dayItems.map(item => ({
+                row: item.row,
+                day: item.day,
+                time: item.time,
+                tagType: item.tagType,
+                tagText: item.tagText,
+                title: item.title,
+                mapUrl: item.mapUrl,
+                imgUrl: item.imgUrl,
+                desc: item.desc
+            }));
+
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        targetSheet: "SCHEDULE",
+                        action: "reorder",
+                        day: day,
+                        items: orderedRows
+                    })
+                });
+                alert(`Day ${day.replace('day', '')} 行程順序已成功儲存至雲端！`);
+                modifiedDays.delete(day);
+                btn.style.display = 'none';
+
+                editModeState[day] = false;
+                const toggleBtn = document.getElementById(`editToggleBtn-${day}`);
+                if (toggleBtn) {
+                    toggleBtn.innerText = "✏️ 編輯行程";
+                    toggleBtn.style.background = "#475569";
+                }
+
+                setTimeout(fetchSchedulesFromCloud, 1000);
+            } catch (e) {
+                console.error(e);
+                alert('儲存順序失敗！');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "💾 儲存排序";
+            }
+        }
+
+        function openScheduleModal(day, row = null) {
+            document.getElementById('scheduleModal').style.display = 'flex';
+            document.getElementById('editScheduleDay').value = day;
+            if (row) {
+                const item = schedules.find(s => s.row == row);
+                if (item) {
+                    document.getElementById('modalTitle').innerText = '✏️ 編輯行程項目';
+                    document.getElementById('editScheduleRow').value = item.row;
+                    document.getElementById('schTime').value = item.time || '';
+                    document.getElementById('schTagType').value = item.tagType || '';
+                    document.getElementById('schTagText').value = item.tagText || '';
+                    document.getElementById('schTitle').value = item.title || '';
+                    document.getElementById('schMap').value = item.mapUrl || '';
+                    document.getElementById('schImg').value = item.imgUrl || '';
+                    document.getElementById('schDesc').value = item.desc || '';
+                }
+            } else {
+                document.getElementById('modalTitle').innerText = '➕ 新增行程項目';
+                document.getElementById('editScheduleRow').value = '';
+                document.getElementById('schTime').value = '';
+                document.getElementById('schTagType').value = '';
+                document.getElementById('schTagText').value = '';
+                document.getElementById('schTitle').value = '';
+                document.getElementById('schMap').value = '';
+                document.getElementById('schImg').value = '';
+                document.getElementById('schDesc').value = '';
+            }
+        }
+
+        function closeScheduleModal() {
+            document.getElementById('scheduleModal').style.display = 'none';
+        }
+
+        function editSchedule(row) {
+            const item = schedules.find(s => s.row == row);
+            if (item) {
+                openScheduleModal(item.day, row);
+            }
+        }
+
+        async function saveScheduleItem() {
+            const row = document.getElementById('editScheduleRow').value;
+            const day = document.getElementById('editScheduleDay').value;
+            let rawTime = document.getElementById('schTime').value.trim();
+            const tagType = document.getElementById('schTagType').value;
+            const tagText = document.getElementById('schTagText').value.trim();
+            const title = document.getElementById('schTitle').value.trim();
+            const mapUrl = document.getElementById('schMap').value.trim();
+            const imgUrl = document.getElementById('schImg').value.trim();
+            const desc = document.getElementById('schDesc').value.trim();
+
+            if (!rawTime || !title) {
+                alert('請填寫時間與行程標題！');
+                return;
+            }
+
+            let timeMatch = rawTime.match(/^(\d{1,2}):(\d{2})$/);
+            let formattedTime = rawTime;
+            if (timeMatch) {
+                let hour = timeMatch[1];
+                let minute = timeMatch[2];
+                if (hour.length === 1) {
+                    hour = '0' + hour;
+                }
+                formattedTime = `${hour}:${minute}`;
+            }
+
+            const payload = {
+                targetSheet: "SCHEDULE",
+                action: row ? "edit" : "add",
+                row: row ? Number(row) : "",
+                day,
+                time: formattedTime,
+                tagType,
+                tagText,
+                title,
+                mapUrl,
+                imgUrl,
+                desc
+            };
+
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                alert('儲存成功！正在更新雲端行程...');
+                closeScheduleModal();
+                setTimeout(fetchSchedulesFromCloud, 1000);
+            } catch (e) {
+                console.error(e);
+                alert('儲存失敗！');
+            }
+        }
+
+        async function deleteSchedule(row) {
+            if (!confirm('確定要刪除這個行程項目嗎？')) return;
+
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        targetSheet: "SCHEDULE",
+                        action: "delete",
+                        row: Number(row)
+                    })
+                });
+                alert('已刪除行程！正在更新資料...');
+                setTimeout(fetchSchedulesFromCloud, 1000);
+            } catch (e) {
+                console.error(e);
+                alert('刪除失敗！');
+            }
+        }
+		
         /* ===== 地圖 Spot 與 伴手禮 雲端同步邏輯 (Sheet: MAP) ===== */
         async function fetchMapStateFromCloud() {
             try {
@@ -1833,7 +1942,6 @@
             }
         }
 		
-		/* 伴手禮點擊切換狀態與同步雲端 */
         async function toggleGiftState(id) {
             const imgEl = document.getElementById(id);
             if (!imgEl) return;
@@ -1859,9 +1967,9 @@
             }
         }
 
-        // 初始化讀取雲端狀態
         window.addEventListener('DOMContentLoaded', () => {
             fetchMapStateFromCloud();
+            fetchSchedulesFromCloud();
             fetchExpensesFromCloud();
             renderMembersUI();
         });
@@ -2433,10 +2541,6 @@
 
             settlementDetails.innerHTML = settlementText || '目前帳目已完全平衡！';
         }
-
-        renderMembersUI();
-        fetchExpensesFromCloud();
-        fetchMapStateFromCloud();
     </script>
 </body>
 </html>
