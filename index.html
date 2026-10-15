@@ -730,6 +730,7 @@
         <button class="day-btn" id="btn-day4" onclick="switchTab('day4')">Day 4<span class="date">10/24 (六)</span></button>
         <button class="day-btn" id="btn-day5" onclick="switchTab('day5')">Day 5<span class="date">10/25 (日)</span></button>
         <button class="day-btn" id="btn-day6" onclick="switchTab('day6')">Day 6<span class="date">10/26 (一)</span></button>
+        <button class="day-btn" id="btn-dayRain" onclick="switchTab('dayRain')">下雨天<span class="date">何處去</span></button>
     </div>	
 	
     <!-- 美食購物次選單 -->
@@ -884,6 +885,19 @@
             <div id="scheduleList-day6">載入中...</div>
         </div>
 
+        <!-- ===== 下雨天 ===== -->
+        <div id="dayRain" class="tab-content">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+                <h3 style="font-size:14px; color:var(--accent-ocean);">🌊 下雨天方案 <span class="sync-badge">☁️ 雲端同步</span></h3>
+                <div style="display:flex; gap:6px;">
+                    <button id="editToggleBtn-dayRain" onclick="toggleEditMode('dayRain')" style="padding: 6px 10px; background:#475569; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">✏️ 編輯行程</button>
+                    <button id="saveOrderBtn-dayRain" onclick="saveDayOrder('dayRain')" style="display:none; padding: 6px 10px; background:#047857; color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">💾 儲存排序</button>
+                    <button onclick="openScheduleModal('dayRain')" style="padding: 6px 12px; background:var(--accent-ocean); color:white; border:none; border-radius:4px; font-size:12px; cursor:pointer;">➕ 新增行程</button>
+                </div>
+            </div>
+            <div id="scheduleList-dayRain">載入中...</div>
+        </div>
+		
         <!-- ===== Map (地圖導覽與景點清單) ===== -->
         <div id="map" class="tab-content">
             <div class="calc-card">
@@ -926,6 +940,8 @@
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_3_3" onchange="syncMapState('map_3_3')"><label for="map_3_3">3.3. Ueno 德國文化村</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_3_4" onchange="syncMapState('map_3_4')"><label for="map_3_4">3.4. 宮古島海底公園</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_3_5" onchange="syncMapState('map_3_5')"><label for="map_3_5">3.5. 雪鹽博物館</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_6" onchange="syncMapState('map_3_6')"><label for="map_3_6">3.6. SHIGIRA 黃金溫泉</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_7" onchange="syncMapState('map_3_7')"><label for="map_3_7">3.7. 烏托邦農場Utopia Farm</label></div>
                 </div>
 
                 <div class="check-group">
@@ -951,6 +967,7 @@
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_6_2" onchange="syncMapState('map_6_2')"><label for="map_6_2">6.2. SUP / 獨木舟</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_6_3" onchange="syncMapState('map_6_3')"><label for="map_6_3">6.3. 探索南瓜洞洞穴 (南瓜形鐘乳石)</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_6_4" onchange="syncMapState('map_6_4')"><label for="map_6_4">6.4. 八重干瀨 (Yabiji) 旅遊</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_6_5" onchange="syncMapState('map_6_5')"><label for="map_6_5">6.5. 玻璃底觀光船</label></div>
                 </div>
             </div>
         </div>
@@ -1524,7 +1541,8 @@
             day3: false,
             day4: false,
             day5: false,
-            day6: false
+            day6: false,
+			dayRain: false
         };
 		
         function switchTab(tabId) {
@@ -1599,7 +1617,7 @@
                         ...item,
                         row: item.row || (index + 2)
                     }));
-                    ['day1', 'day2', 'day3', 'day4', 'day5', 'day6'].forEach(d => {
+                    ['day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'dayRain'].forEach(d => {
                         modifiedDays.delete(d);
                         const btn = document.getElementById(`saveOrderBtn-${d}`);
                         if (btn) btn.style.display = 'none';
@@ -1608,7 +1626,7 @@
                 }
             } catch (e) {
                 console.error("讀取行程資料失敗:", e);
-                ['day1', 'day2', 'day3', 'day4', 'day5', 'day6'].forEach(d => {
+                ['day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'dayRain'].forEach(d => {
                     document.getElementById(`scheduleList-${d}`).innerHTML = '讀取雲端行程失敗。';
                 });
             }
@@ -1628,7 +1646,7 @@
         }
 
         function renderSchedules() {
-            ['day1', 'day2', 'day3', 'day4', 'day5', 'day6'].forEach(day => {
+            ['day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'dayRain'].forEach(day => {
                 const container = document.getElementById(`scheduleList-${day}`);
                 if (!container) return;
                 const dayItems = schedules.filter(s => s.day === day);
